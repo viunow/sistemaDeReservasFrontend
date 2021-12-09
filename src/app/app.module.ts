@@ -3,7 +3,6 @@ import { NgModule } from '@angular/core';
 
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
-//nao consigo usar o flex-layout, nao compila
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
