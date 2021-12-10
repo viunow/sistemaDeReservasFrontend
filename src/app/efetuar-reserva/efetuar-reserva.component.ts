@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EfetuarReservaService } from './efetuar-reserva.service';
 
 @Component({
   selector: 'app-efetuar-reserva',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EfetuarReservaComponent implements OnInit {
 
-  constructor() { }
+  private reservas: any[] = [];
+
+  constructor(private efetuarReservaService: EfetuarReservaService) { }
 
   ngOnInit(): void {
+    this.reservas = this.efetuarReservaService.getReservas();
   }
 
 }

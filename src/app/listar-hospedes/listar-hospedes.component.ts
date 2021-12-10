@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ListarHospedesService } from './listar-hospedes.service';
 
 @Component({
   selector: 'app-listar-hospedes',
@@ -7,9 +8,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarHospedesComponent implements OnInit {
 
-  constructor() { }
+  public hospedes: any[] = [];
 
-  ngOnInit(): void {
+  constructor(private listarHospedesService: ListarHospedesService) { }
+
+  ngOnInit() {
+    this.hospedes = this.listarHospedesService.getHospedes();
   }
 
 }

@@ -1,1 +1,10 @@
-<a>listar-hospedes works!</a>
+<p>Lista de hóspedes</p>
+
+<mat-list role="list">
+    <mat-list-item class="list-item" role="listitem"
+    *ngFor="let hospede of hospedes">
+    {{hospede.nomeCompleto}}</mat-list-item>
+</mat-list>
+  
+
+<router-outlet></router-outlet>
