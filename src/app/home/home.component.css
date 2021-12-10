@@ -1,3 +1,15 @@
 .button-home {
     cursor: pointer;
 }
+
+h1 {
+    font-weight: 500;
+}
+
+.container {
+    padding: 16px 16px;
+}
+
+.paragrafo-home {
+    font-size: 16px;
+}

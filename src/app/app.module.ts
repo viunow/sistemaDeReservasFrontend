@@ -7,7 +7,8 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
-
+import { MatGridListModule } from '@angular/material/grid-list';
+ 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { HomeComponent } from './home/home.component';
@@ -35,7 +36,8 @@ import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.compo
     MatToolbarModule,
     MatButtonModule,
     MatMenuModule,
-    MatListModule
+    MatListModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
