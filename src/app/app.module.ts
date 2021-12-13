@@ -8,6 +8,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatListModule } from '@angular/material/list';
 import { MatGridListModule } from '@angular/material/grid-list';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
  
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -37,7 +39,9 @@ import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.compo
     MatButtonModule,
     MatMenuModule,
     MatListModule,
-    MatGridListModule
+    MatGridListModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
