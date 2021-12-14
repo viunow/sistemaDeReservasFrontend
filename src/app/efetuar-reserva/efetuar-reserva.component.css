@@ -6,12 +6,12 @@ h1 {
     font-weight: 500;
 }
 
-.example-form {
+.efetuar-reserva-form {
     min-width: 150px;
-    max-width: 500px;
+    max-width: 400px;
     width: 100%;
 }
 
-.example-full-width {
+.efetuar-reserva-form-field {
     width: 100%;
 }
