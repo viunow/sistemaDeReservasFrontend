@@ -24,6 +24,16 @@
             <mat-label>CPF</mat-label>
             <input matInput placeholder="CPF">
         </mat-form-field>
+        
+        <mat-form-field appearance="fill">
+            <mat-label>Tipo do quarto</mat-label>
+            <mat-select>
+              <mat-option value="convencional">Convencional</mat-option>
+              <mat-option value="luxo">Luxo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <a href="/enviar-formulario"><button mat-raised-button color="accent" class="button-efetuar-reserva">Efetuar reserva</button></a>
 
         <!-- <mat-form-field appearance="fill">
             <mat-label>Enter a date range</mat-label>
