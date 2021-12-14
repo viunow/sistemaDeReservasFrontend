@@ -13,10 +13,10 @@ export class EfetuarReservaComponent implements OnInit {
 
   getErrorMessage() {
     if (this.email.hasError('required')) {
-      return 'You must enter a value';
+      return 'Campo obrigatório';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email.hasError('email') ? 'Não é um email válido' : '';
   }
 
   range = new FormGroup({
