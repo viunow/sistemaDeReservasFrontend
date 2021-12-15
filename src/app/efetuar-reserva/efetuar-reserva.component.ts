@@ -19,11 +19,6 @@ export class EfetuarReservaComponent implements OnInit {
     return this.email.hasError('email') ? 'Não é um email válido' : '';
   }
 
-  range = new FormGroup({
-    start: new FormControl(),
-    end: new FormControl(),
-  })
-
   private reservas: any[] = [];
 
   constructor(private efetuarReservaService: EfetuarReservaService) { }
