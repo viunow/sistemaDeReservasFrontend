@@ -12,7 +12,16 @@ h1 {
     width: 100%;
 }
 
+.efetuar-reserva-field {
+    width: 250px;
+}
+
 .efetuar-reserva-form-field {
     width: 100%;
 }
 
+.datas-container {
+    display: flex;
+    justify-content: space-between;
+    width: 520px;
+}

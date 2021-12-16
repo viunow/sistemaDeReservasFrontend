@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EfetuarReservaService } from './efetuar-reserva.service';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-efetuar-reserva',

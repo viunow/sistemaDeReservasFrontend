@@ -12,7 +12,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDatepickerModule } from '@angular/material/datepicker';
-import { MatNativeDateModule } from '@angular/material/core'; 
+import { MatNativeDateModule, MAT_DATE_LOCALE } from '@angular/material/core'; 
 import { MatSelectModule } from '@angular/material/select';
 
 import { AppComponent } from './app.component';
@@ -52,7 +52,9 @@ import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.compo
     MatNativeDateModule,
     MatSelectModule
   ],
-  providers: [],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

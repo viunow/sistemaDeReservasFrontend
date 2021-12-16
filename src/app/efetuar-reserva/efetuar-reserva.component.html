@@ -4,28 +4,28 @@
     </div>
 
     <form class="efetuar-reserva-form">
-        <mat-form-field id="nome-completo-form" class="efetuar-reserva-form-field" appearance="outline">
+        <mat-form-field id="nome-completo-field" class="efetuar-reserva-field" appearance="outline">
           <mat-label>Nome completo</mat-label>
           <input matInput placeholder="Nome completo">
         </mat-form-field>
 
-        <mat-form-field id="telefone-form" class="efetuar-reserva-form-field" appearance="outline">
+        <mat-form-field id="telefone-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>Telefone</mat-label>
             <input matInput placeholder="Telefone">
         </mat-form-field>
 
-        <mat-form-field id="email-form" appearance="outline">
+        <mat-form-field id="email-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>Email</mat-label>
             <input matInput placeholder="email@examplo.com" [formControl]="email" required>
             <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         
-        <mat-form-field id="cpf-form" class="efetuar-reserva-cpf-form-field" appearance="outline">
+        <mat-form-field id="cpf-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>CPF</mat-label>
             <input matInput placeholder="CPF">
         </mat-form-field>
         
-        <mat-form-field appearance="outline">
+        <mat-form-field id="tipoquarto-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>Tipo do quarto</mat-label>
             <mat-select>
               <mat-option value="convencional">Convencional</mat-option>
@@ -33,21 +33,23 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field>
-            <mat-label>Data inicial</mat-label>
-            <input matInput [matDatepicker]="picker">
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-datepicker #picker></mat-datepicker>
-        </mat-form-field>
+        <div class="datas-container">
+            <mat-form-field id="datainicial-field" class="efetuar-reserva-field">
+                <mat-label>Data inicial</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+    
+            <mat-form-field id="datafinal-field" class="efetuar-reserva-field">
+                <mat-label>Data final</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
 
-        <mat-form-field>
-            <mat-label>Data final</mat-label>
-            <input matInput [matDatepicker]="picker2">
-            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-            <mat-datepicker #picker2></mat-datepicker>
-        </mat-form-field>
-        <br>
-        <a href="/enviar-formulario"><button mat-raised-button color="accent" class="button-efetuar-reserva">Efetuar reserva</button></a>
+        <a id="enviar-form" class="enviar-form" href="/enviar-formulario"><button mat-raised-button color="accent" class="button-efetuar-reserva">Efetuar reserva</button></a>
 
         <!-- <mat-form-field appearance="fill">
             <mat-label>Enter a date range</mat-label>
