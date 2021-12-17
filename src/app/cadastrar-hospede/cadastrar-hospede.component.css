@@ -6,14 +6,18 @@ h1 {
     font-weight: 500;
 }
 
-.modificar-reserva-form {
+.efetuar-reserva-form {
     min-width: 150px;
     max-width: 400px;
     width: 100%;
 }
 
-.modificar-reserva-field {
+.efetuar-reserva-field {
     width: 250px;
+}
+
+.efetuar-reserva-form-field {
+    width: 100%;
 }
 
 .datas-container {

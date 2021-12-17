@@ -1,30 +1,20 @@
 <div class="container">
+
     <div class="container-conteudo">
         <h1>Efetuar reserva</h1>
     </div>
 
     <form class="efetuar-reserva-form">
-        <mat-form-field id="nome-completo-field" class="efetuar-reserva-field" appearance="outline">
-          <mat-label>Nome completo</mat-label>
-          <input matInput placeholder="Nome completo">
+
+        <mat-form-field id="selecionar-hospede-field" class="efetuar-reserva-field" appearance="outline">
+            <mat-label>Selecionar hóspede</mat-label>
+            <mat-select>
+              <mat-option *ngFor="let hospede of hospedes" [value]="hospede.value">
+                {{hospede.viewValue}}
+              </mat-option>
+            </mat-select>
         </mat-form-field>
 
-        <mat-form-field id="telefone-field" class="efetuar-reserva-field" appearance="outline">
-            <mat-label>Telefone</mat-label>
-            <input matInput placeholder="Telefone">
-        </mat-form-field>
-
-        <mat-form-field id="email-field" class="efetuar-reserva-field" appearance="outline">
-            <mat-label>Email</mat-label>
-            <input matInput placeholder="email@examplo.com" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
-        </mat-form-field>
-        
-        <mat-form-field id="cpf-field" class="efetuar-reserva-field" appearance="outline">
-            <mat-label>CPF</mat-label>
-            <input matInput placeholder="CPF">
-        </mat-form-field>
-        
         <mat-form-field id="tipoquarto-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>Tipo do quarto</mat-label>
             <mat-select>
@@ -34,15 +24,15 @@
         </mat-form-field>
 
         <div class="datas-container">
-            <mat-form-field id="datainicial-field" class="efetuar-reserva-field">
-                <mat-label>Data inicial</mat-label>
+            <mat-form-field id="dataentrada-field" class="efetuar-reserva-field">
+                <mat-label>Data de entrada</mat-label>
                 <input matInput [matDatepicker]="picker">
                 <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                 <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
-    
-            <mat-form-field id="datafinal-field" class="efetuar-reserva-field">
-                <mat-label>Data final</mat-label>
+            
+            <mat-form-field id="datasaida-field" class="efetuar-reserva-field">
+                <mat-label>Data de saida</mat-label>
                 <input matInput [matDatepicker]="picker2">
                 <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
                 <mat-datepicker #picker2></mat-datepicker>
@@ -50,20 +40,6 @@
         </div>
 
         <a id="enviar-form" class="enviar-form" href="/enviar-formulario"><button mat-raised-button color="accent" class="button-efetuar-reserva">Efetuar reserva</button></a>
-
-        <!-- <mat-form-field appearance="fill">
-            <mat-label>Enter a date range</mat-label>
-            <mat-date-range-input [formGroup]="range" [rangePicker]="picker">
-              <input matStartDate formControlName="start" placeholder="Start date">
-              <input matEndDate formControlName="end" placeholder="End date">
-            </mat-date-range-input>
-            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-            <mat-date-range-picker #picker></mat-date-range-picker>
-          
-            <mat-error *ngIf="range.controls.start.hasError('matStartDateInvalid')">Invalid start date</mat-error>
-            <mat-error *ngIf="range.controls.end.hasError('matEndDateInvalid')">Invalid end date</mat-error>
-        </mat-form-field> -->
-
     </form>
 
 </div>

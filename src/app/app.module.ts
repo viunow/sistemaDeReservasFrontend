@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -23,6 +23,7 @@ import { EfetuarReservaComponent } from './efetuar-reserva/efetuar-reserva.compo
 import { ModificarReservaComponent } from './modificar-reserva/modificar-reserva.component';
 import { CancelarReservaComponent } from './cancelar-reserva/cancelar-reserva.component';
 import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.component';
+import { CadastrarHospedeComponent } from './cadastrar-hospede/cadastrar-hospede.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.compo
     ListarHospedesComponent,
     ReservasComponent,
     ModificarReservaComponent,
-    CancelarReservaComponent
+    CancelarReservaComponent,
+    CadastrarHospedeComponent
   ],
   imports: [
     BrowserModule,

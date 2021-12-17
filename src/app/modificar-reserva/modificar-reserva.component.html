@@ -2,5 +2,45 @@
     <div class="container-conteudo">
         <h1>Modificar reserva</h1>
     </div>
+
+    <form class="modificar-reserva-form">
+
+        
+        <mat-form-field id="selecionar-hospede-field" class="modificar-reserva-field" appearance="outline">
+            <mat-label>Selecionar hóspede</mat-label>
+            <mat-select>
+                <mat-option *ngFor="let hospede of hospedes" [value]="hospede.value">
+                    {{hospede.viewValue}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <mat-form-field id="tipoquarto-field" class="modificar-reserva-field" appearance="outline">
+            <mat-label>Tipo do quarto</mat-label>
+            <mat-select>
+                <mat-option value="convencional">Convencional</mat-option>
+                <mat-option value="luxo">Luxo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        
+        <div class="datas-container">
+            <mat-form-field id="dataentrada-field" class="modificar-reserva-field">
+                <mat-label>Data de entrada</mat-label>
+                <input matInput [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            
+            <mat-form-field id="datasaida-field" class="modificar-reserva-field">
+                <mat-label>Data de saida</mat-label>
+                <input matInput [matDatepicker]="picker2">
+                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+                <mat-datepicker #picker2></mat-datepicker>
+            </mat-form-field>
+        </div>
+
+        <a id="enviar-form" class="enviar-form" href="/enviar-formulario"><button mat-raised-button color="accent" class="button-modificar-reserva">Modificar reserva</button></a>
+    </form>
+
 </div>
 <router-outlet></router-outlet>

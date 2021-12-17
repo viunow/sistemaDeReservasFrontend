@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { EfetuarReservaService } from './efetuar-reserva.service';
-import { FormControl, Validators } from '@angular/forms';
+
+interface Hospede {
+  value: string;
+  viewValue: string;
+}
 
 @Component({
   selector: 'app-efetuar-reserva',
@@ -9,15 +13,11 @@ import { FormControl, Validators } from '@angular/forms';
 })
 export class EfetuarReservaComponent implements OnInit {
 
-  email = new FormControl('', [Validators.required, Validators.email]);
-
-  getErrorMessage() {
-    if (this.email.hasError('required')) {
-      return 'Campo obrigatório';
-    }
-
-    return this.email.hasError('email') ? 'Não é um email válido' : '';
-  }
+  hospedes: Hospede[] = [
+    {value: 'user1', viewValue: 'Vinicius Neto'},
+    {value: 'user2', viewValue: 'John Doe'},
+    {value: 'user3', viewValue: 'Linus Torvalds'}
+  ];
 
   private reservas: any[] = [];
 

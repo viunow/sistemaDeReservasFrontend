@@ -1,11 +1,18 @@
 <mat-toolbar color="secondary">
     <span class="button-home" routerLink="/home">Sistema de Reservas</span>
     <span class="fill"></span>
-    <button mat-button routerLinkActive="mat-accent" [matMenuTriggerFor]="menu">Reservas</button>
-    <mat-menu #menu="matMenu">
+
+    <button mat-button routerLinkActive="mat-accent" [matMenuTriggerFor]="menuHospedes">Hóspedes</button>
+    <mat-menu #menuHospedes="matMenu">
+      <button mat-menu-item routerLink="/cadastrar-hospede">Cadastrar hóspede</button>
+      <button mat-menu-item routerLink="/listar-hospedes">Listar hóspedes</button>
+    </mat-menu>
+
+    <button mat-button routerLinkActive="mat-accent" [matMenuTriggerFor]="menuReservas">Reservas</button>
+    <mat-menu #menuReservas="matMenu">
       <button mat-menu-item routerLink="/efetuar-reserva">Efetuar reserva</button>
       <button mat-menu-item routerLink="/modificar-reserva">Modificar reserva</button>
       <button mat-menu-item routerLink="/cancelar-reserva">Cancelar reserva</button>
     </mat-menu>
-    <button mat-button routerLink="/listar-hospedes" routerLinkActive="mat-accent">Listar hóspedes</button>
+
 </mat-toolbar>
