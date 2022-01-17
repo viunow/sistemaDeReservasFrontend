@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Hospede } from '../models/hospede';
 import { ListarHospedesService } from './listar-hospedes.service';
 
 @Component({
@@ -8,12 +9,15 @@ import { ListarHospedesService } from './listar-hospedes.service';
 })
 export class ListarHospedesComponent implements OnInit {
 
-  public hospedes: any[] = [];
+  public hospedes: Array<Hospede>;
 
   constructor(private listarHospedesService: ListarHospedesService) { }
 
   ngOnInit() {
-    this.hospedes = this.listarHospedesService.getHospedes();
+    this.listarHospedesService.getHospedes()
+      .subscribe(hospedes => {
+        this.hospedes = hospedes;
+      });
   }
 
 }

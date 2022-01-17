@@ -1,4 +1,7 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
+import { Hospede } from '../models/hospede';
 
 @Injectable({
   providedIn: 'root'
@@ -6,15 +9,17 @@ import { Injectable } from '@angular/core';
 
 export class ListarHospedesService {
 
-  private hospedes: any[] = [
-    { id: 1, nomeCompleto: 'Test One', pendencia: false },
-    { id: 2, nomeCompleto: 'Test Two', pendencia: true },
-    { id: 3, nomeCompleto: 'Test Three', pendencia: false }
-  ];
+  constructor(private http: HttpClient) { }
 
-  getHospedes() {
-    return this.hospedes;
+  getHospedes(): Observable<Array<Hospede>> {
+    return this.http.get<Array<Hospede>>("https://localhost:5001/api/hospede/");
   }
 
-  constructor() { }
+  getHospede(id: string): Observable<Hospede> {
+    // return this.http.get<Hospede>("https://localhost:5001/api/hospede/"+id);
+    // return this.http.get<Hospede>("https://localhost:5001/api/hospede/".concat(id));
+    // return this.http.get<Hospede>(`https://localhost:5001/api/hospede/${id}`);
+    return this.http.get<Hospede>(`https://localhost:5001/api/hospede/${id}`);
+  }
+ 
 }

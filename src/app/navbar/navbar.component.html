@@ -8,6 +8,12 @@
       <button mat-menu-item routerLink="/listar-hospedes">Listar hóspedes</button>
     </mat-menu>
 
+    <button mat-button routerLinkActive="mat-accent" [matMenuTriggerFor]="menuQuartos">Quartos</button>
+    <mat-menu #menuQuartos="matMenu">
+      <button mat-menu-item routerLink="/cadastrar-quarto">Cadastrar quarto</button>
+      <button mat-menu-item routerLink="/listar-quartos">Listar quartos</button>
+    </mat-menu>
+    
     <button mat-button routerLinkActive="mat-accent" [matMenuTriggerFor]="menuReservas">Reservas</button>
     <mat-menu #menuReservas="matMenu">
       <button mat-menu-item routerLink="/efetuar-reserva">Efetuar reserva</button>

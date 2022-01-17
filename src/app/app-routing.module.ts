@@ -7,6 +7,8 @@ import { ModificarReservaComponent } from './modificar-reserva/modificar-reserva
 import { CancelarReservaComponent } from './cancelar-reserva/cancelar-reserva.component';
 import { ListarHospedesComponent } from './listar-hospedes/listar-hospedes.component';
 import { CadastrarHospedeComponent } from './cadastrar-hospede/cadastrar-hospede.component';
+import { CadastrarQuartoComponent } from './cadastrar-quarto/cadastrar-quarto.component';
+import { ListarQuartosComponent } from './listar-quartos/listar-quartos.component';
 
 
 const routes: Routes = [
@@ -16,6 +18,8 @@ const routes: Routes = [
   { path: 'cancelar-reserva', component: CancelarReservaComponent },
   { path: 'listar-hospedes', component: ListarHospedesComponent },
   { path: 'cadastrar-hospede', component: CadastrarHospedeComponent },
+  { path: 'cadastrar-quarto', component: CadastrarQuartoComponent },
+  { path: 'listar-quartos', component: ListarQuartosComponent },
   { path: '', component: HomeComponent }
 ];
 
