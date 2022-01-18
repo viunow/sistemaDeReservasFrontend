@@ -1,1 +1,15 @@
-<p>cadastrar-quarto works!</p>
+<div class="container">
+    <h1>Cadastrar quarto</h1>
+    <form class="cadastrar-quarto-form">
+        <mat-form-field id="tipo-quarto-field" class="tipo-quarto-field" appearance="outline">
+            <mat-label>Tipo do quarto</mat-label>
+            <mat-select>
+              <mat-option value="convencional">Convencional</mat-option>
+              <mat-option value="luxo">Luxo</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <a id="cadastrar-quarto-button" class="cadastrar-quarto-button" href="/"><button mat-raised-button color="accent" class="button-cadastrar-quarto">Cadastrar</button></a>
+    </form>
+</div>
+<router-outlet></router-outlet>

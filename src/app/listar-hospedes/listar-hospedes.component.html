@@ -1,10 +1,9 @@
-<p>Lista de hóspedes</p>
-
-<mat-list role="list">
-    <mat-list-item class="list-item" role="listitem"
-    *ngFor="let hospede of hospedes">
-    {{hospede.nomeCompleto}}</mat-list-item>
-</mat-list>
-  
-
+<div class="container">
+    <h1>Lista de hóspedes</h1>
+    <mat-list role="list">
+        <mat-list-item class="list-item" role="listitem"
+        *ngFor="let hospede of hospedes">
+        {{hospede.nomeCompleto}}<mat-divider></mat-divider></mat-list-item>
+    </mat-list>
+</div>
 <router-outlet></router-outlet>

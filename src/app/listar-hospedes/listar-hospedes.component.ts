@@ -19,5 +19,4 @@ export class ListarHospedesComponent implements OnInit {
         this.hospedes = hospedes;
       });
   }
-
 }

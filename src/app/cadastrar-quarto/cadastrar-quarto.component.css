@@ -1,0 +1,21 @@
+.container {
+    padding: 20px 16px;
+}
+
+h1 {
+    font-weight: 500;
+}
+
+.cadastrar-quarto-form {
+    min-width: 150px;
+    max-width: 400px;
+    width: 100%;
+}
+
+.tipo-quarto-field {
+    width: 250px;
+}
+
+.tipo-quarto-form-field {
+    width: 100%;
+}
