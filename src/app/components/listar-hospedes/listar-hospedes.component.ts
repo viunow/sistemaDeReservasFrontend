@@ -7,6 +7,7 @@ import { ListarHospedesService } from './listar-hospedes.service';
   templateUrl: './listar-hospedes.component.html',
   styleUrls: ['./listar-hospedes.component.css']
 })
+
 export class ListarHospedesComponent implements OnInit {
 
   public hospedes: Array<Hospede>;

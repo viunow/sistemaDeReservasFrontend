@@ -4,29 +4,28 @@
         <p>Após cadastrar o hóspede, você pode efetuar uma reserva no menu Reservas</p>
     </div>
 
-    <form class="efetuar-reserva-form">
+    <form class="efetuar-reserva-form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field id="nome-completo-field" class="efetuar-reserva-field" appearance="outline">
           <mat-label>Nome completo</mat-label>
-          <input matInput placeholder="Nome completo">
+          <input matInput placeholder="Nome completo" formControlName="nome" required>
         </mat-form-field>
     
         <mat-form-field id="telefone-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>Telefone</mat-label>
-            <input matInput placeholder="Telefone">
+            <input matInput placeholder="Telefone" formControlName="telefone" required>
         </mat-form-field>
     
         <mat-form-field id="email-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>Email</mat-label>
-            <input matInput placeholder="email@examplo.com" [formControl]="email" required>
-            <mat-error *ngIf="email.invalid">{{getErrorMessage()}}</mat-error>
+            <input matInput placeholder="email@exemplo.com" formControlName="email" required>
         </mat-form-field>
         
         <mat-form-field id="cpf-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>CPF</mat-label>
-            <input matInput placeholder="CPF">
+            <input matInput placeholder="CPF" formControlName="cpf" required>
         </mat-form-field>
         <br>
-        <a id="enviar-form-hospede" class="enviar-form-hospede" href="/enviar-formulario-hospede"><button mat-raised-button color="accent" class="button-cadastrar-hospede">Cadastrar</button></a>
+        <a id="enviar-form-hospede" class="enviar-form-hospede" href=""><button type="submit" mat-raised-button color="accent" class="button-cadastrar-hospede">Cadastrar</button></a>
     </form>
 </div>
 <router-outlet></router-outlet>

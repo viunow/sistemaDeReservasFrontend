@@ -1,17 +1,17 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Hospede } from '../../models/hospede';
+import { CadastrarHospedeInputModel } from 'src/app/services/input-models/cadastrar-hospede-input-model';
 
-// @Injectable({
-//     providedIn: 'root'
-// })
+@Injectable({
+    providedIn: 'root'
+})
 
-// export class CadastrarHospedeService {
+export class CadastrarHospedeService {
     
-//     constructor(private http: HttpClient) { }
+    constructor(private http: HttpClient) { }
 
-//     postHospede(): Observable<Hospede> {
-//         return this.http.post<Hospede>('https://localhost:5001/api/hospede');
-//     }
-// }
+    postHospede(input: CadastrarHospedeInputModel): Observable<any> {
+        return this.http.post('https://localhost:5001/api/hospede', input);
+    }
+}
