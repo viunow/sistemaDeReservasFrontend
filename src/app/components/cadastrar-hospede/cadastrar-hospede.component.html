@@ -25,7 +25,7 @@
             <input matInput placeholder="CPF" formControlName="cpf" required>
         </mat-form-field>
         <br>
-        <a id="enviar-form-hospede" class="enviar-form-hospede" href=""><button type="submit" mat-raised-button color="accent" class="button-cadastrar-hospede">Cadastrar</button></a>
+        <a id="enviar-form-hospede" class="enviar-form-hospede" href=""><button type="submit" mat-raised-button color="accent" class="button-cadastrar-hospede" (click)="abrirSnackbar()">Cadastrar</button></a>
     </form>
 </div>
 <router-outlet></router-outlet>

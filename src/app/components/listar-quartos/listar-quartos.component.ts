@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Quarto } from 'src/app/models/quarto';
+import { ListarQuartosService } from './listar-quartos.service';
 
 @Component({
   selector: 'app-listar-quartos',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ListarQuartosComponent implements OnInit {
 
-  constructor() { }
+  public quartos: Array<Quarto>;
+
+  constructor(private listarQuartosService: ListarQuartosService) { }
 
   ngOnInit(): void {
+    this.listarQuartosService.getQuartos()
+      .subscribe(quartos => {
+        this.quartos = quartos;
+      })
   }
 
 }
