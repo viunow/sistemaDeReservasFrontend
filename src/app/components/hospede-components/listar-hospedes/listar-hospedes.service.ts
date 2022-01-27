@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Hospede } from '../../models/hospede';
+import { Hospede } from '../../../models/hospede';
 
 const baseUrl = "https://localhost:5001/api/hospede/";
 

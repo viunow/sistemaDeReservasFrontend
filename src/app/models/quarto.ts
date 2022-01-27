@@ -1,3 +1,4 @@
-export class Quarto {
-    tipoQuarto: string;
+export enum Quarto {
+    luxo = 0,
+    convencional = 1
 }

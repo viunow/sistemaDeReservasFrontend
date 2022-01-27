@@ -26,10 +26,10 @@ export class CadastrarHospedeComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.createHospede(new CadastrarHospedeInputModel());
+    this.criarHospede(new CadastrarHospedeInputModel());
   }
 
-  createHospede(hospede: CadastrarHospedeInputModel) {
+  criarHospede(hospede: CadastrarHospedeInputModel) {
     this.form = this.formBuilder.group({
       nome: [hospede.nome],
       telefone: [hospede.telefone],

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Hospede } from '../../models/hospede';
+import { Hospede } from 'src/app/models/hospede';
 import { ListarHospedesService } from './listar-hospedes.service';
 
 @Component({

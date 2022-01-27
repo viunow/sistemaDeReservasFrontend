@@ -1,0 +1,17 @@
+<div class="container">
+    <h1>Cadastrar quarto</h1>
+    <form class="cadastrar-quarto-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field id="tipo-quarto-field" class="tipo-quarto-field" appearance="outline">
+            <mat-label>Tipo do quarto</mat-label>
+            <mat-select formControlName="tipoQuarto" >
+              <mat-option value="e" disabled></mat-option>
+              <mat-option value="luxo">Luxo</mat-option>
+              <mat-option value="convencional">Convencional</mat-option>
+            </mat-select>
+        </mat-form-field>
+        <br>
+        <h3>O tipo do quarto selecionado é: {{tipoQuarto}}</h3>
+        <a id="cadastrar-quarto-button" class="cadastrar-quarto-button" href="/"><button mat-raised-button color="accent" class="button-cadastrar-quarto" (click)="abrirSnackbar()">Cadastrar</button></a>
+    </form>
+</div>
+<router-outlet></router-outlet>
