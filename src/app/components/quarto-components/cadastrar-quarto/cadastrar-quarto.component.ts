@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CadastrarQuartoService } from './cadastrar-quarto.service';
+import { QuartosService } from 'src/app/services/quartos-service';
 import { CadastrarQuartoInputModel } from 'src/app/services/input-models/cadastrar-quarto-input-model';
 
 @Component({
@@ -18,7 +18,7 @@ export class CadastrarQuartoComponent implements OnInit {
   });
 
   constructor(
-    private cadastrarQuartoService: CadastrarQuartoService,
+    private quartosService: QuartosService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar
   ) { }
@@ -34,7 +34,7 @@ export class CadastrarQuartoComponent implements OnInit {
   }
 
   onSubmit() {
-    this.cadastrarQuartoService.postQuarto(this.form.value)
+    this.quartosService.postQuarto(this.form.value)
       .subscribe(id => {
         console.log('Quarto cadastrado', this.form.value);
         this.form.reset();

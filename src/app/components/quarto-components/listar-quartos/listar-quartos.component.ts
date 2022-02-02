@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Quarto } from 'src/app/models/quarto';
-import { ListarQuartosService } from './listar-quartos.service';
+import { QuartosService } from 'src/app/services/quartos-service';
 
 @Component({
   selector: 'app-listar-quartos',
@@ -11,10 +11,12 @@ export class ListarQuartosComponent implements OnInit {
 
   public quartos: Array<Quarto>;
 
-  constructor(private listarQuartosService: ListarQuartosService) { }
+  panelOpenState = false;
+
+  constructor(private quartosService: QuartosService) { }
 
   ngOnInit(): void {
-    this.listarQuartosService.getQuartos()
+    this.quartosService.getQuartos()
       .subscribe(quartos => {
         this.quartos = quartos;
       })

@@ -1,9 +1,20 @@
 <div class="container">
     <h1>Lista de quartos</h1>
-    <mat-list role="list">
-        <mat-list-item class="list-item" role="listitem"
-        *ngFor="let quarto of quartos">
-        Quarto {{quarto.tipoQuarto}}<mat-divider></mat-divider></mat-list-item>
-    </mat-list>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false"
+                            *ngFor="let quarto of quartos">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                Quarto {{quarto.tipoQuarto}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container>
+            <p>
+                Preço: R${{quarto.preco}}
+            </p>
+        </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
 <router-outlet></router-outlet>

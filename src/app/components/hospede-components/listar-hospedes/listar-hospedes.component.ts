@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Hospede } from 'src/app/models/hospede';
-import { ListarHospedesService } from './listar-hospedes.service';
+import { HospedesService } from 'src/app/services/hospedes-service';
 
 @Component({
   selector: 'app-listar-hospedes',
@@ -12,10 +12,12 @@ export class ListarHospedesComponent implements OnInit {
 
   public hospedes: Array<Hospede>;
 
-  constructor(private listarHospedesService: ListarHospedesService) { }
+  panelOpenState = false;
+
+  constructor(private hospedesService: HospedesService) { }
 
   ngOnInit() {
-    this.listarHospedesService.getHospedes()
+    this.hospedesService.getHospedes()
       .subscribe(hospedes => {
         this.hospedes = hospedes;
       });

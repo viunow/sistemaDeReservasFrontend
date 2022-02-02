@@ -9,6 +9,7 @@ import { ListarHospedesComponent } from './components/hospede-components/listar-
 import { CadastrarHospedeComponent } from './components/hospede-components/cadastrar-hospede/cadastrar-hospede.component';
 import { CadastrarQuartoComponent } from './components/quarto-components/cadastrar-quarto/cadastrar-quarto.component';
 import { ListarQuartosComponent } from './components/quarto-components/listar-quartos/listar-quartos.component';
+import { CrudReservasComponent } from './components/reserva-components/crud-reservas/crud-reservas.component';
 
 
 const routes: Routes = [
@@ -20,6 +21,7 @@ const routes: Routes = [
   { path: 'cadastrar-hospede', component: CadastrarHospedeComponent },
   { path: 'cadastrar-quarto', component: CadastrarQuartoComponent },
   { path: 'listar-quartos', component: ListarQuartosComponent },
+  { path: 'crud-reservas', component: CrudReservasComponent },
   { path: '', component: HomeComponent }
 ];
 

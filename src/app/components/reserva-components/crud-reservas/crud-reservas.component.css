@@ -1,0 +1,19 @@
+.container {
+    padding: 20px 16px;
+}
+
+h1 {
+    font-weight: 500;
+}
+
+p {
+    font-size: 16px;
+}
+
+.container-tabs {
+    border: 0px solid red;
+}
+
+::ng-deep .mat-tab-list .mat-tab-labels .mat-tab-label-active {
+    color: white;
+}

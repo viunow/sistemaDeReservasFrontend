@@ -18,6 +18,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
+import { MatTabsModule } from '@angular/material/tabs';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -30,6 +32,8 @@ import { ListarHospedesComponent } from './components/hospede-components/listar-
 import { CadastrarHospedeComponent } from './components/hospede-components/cadastrar-hospede/cadastrar-hospede.component';
 import { CadastrarQuartoComponent } from './components/quarto-components/cadastrar-quarto/cadastrar-quarto.component';
 import { ListarQuartosComponent } from './components/quarto-components/listar-quartos/listar-quartos.component';
+import { CrudReservasComponent } from './components/reserva-components/crud-reservas/crud-reservas.component';
+import { HospedesService } from './services/hospedes-service';
 
 @NgModule({
   declarations: [
@@ -43,7 +47,8 @@ import { ListarQuartosComponent } from './components/quarto-components/listar-qu
     CancelarReservaComponent,
     CadastrarHospedeComponent,
     CadastrarQuartoComponent,
-    ListarQuartosComponent
+    ListarQuartosComponent,
+    CrudReservasComponent
   ],
   imports: [
     BrowserModule,
@@ -64,10 +69,13 @@ import { ListarQuartosComponent } from './components/quarto-components/listar-qu
     MatSelectModule,
     MatTableModule,
     MatPaginatorModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatTabsModule,
+    MatExpansionModule
   ],
   providers: [
-    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'}
+    {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
+    HospedesService
   ],
   bootstrap: [AppComponent]
 })

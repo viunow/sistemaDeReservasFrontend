@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { CadastrarHospedeService } from './cadastrar-hospede.service';
 import { CadastrarHospedeInputModel } from 'src/app/services/input-models/cadastrar-hospede-input-model';
+import { HospedesService } from 'src/app/services/hospedes-service';
 
 @Component({
   selector: 'app-cadastrar-hospede',
@@ -20,7 +20,7 @@ export class CadastrarHospedeComponent implements OnInit {
   });
 
   constructor(
-    private cadastrarHospedeService: CadastrarHospedeService, 
+    private hospedesService: HospedesService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar
   ) { }
@@ -39,7 +39,7 @@ export class CadastrarHospedeComponent implements OnInit {
   }
 
   onSubmit() {
-    this.cadastrarHospedeService.postHospede(this.form.value)
+    this.hospedesService.postHospede(this.form.value)
       .subscribe(id => {
         console.log('Hospede cadastrado', this.form.value);
         this.form.reset();
@@ -47,7 +47,7 @@ export class CadastrarHospedeComponent implements OnInit {
   }
 
   abrirSnackbar() {
-    this.snackBar.open('Hóspede cadastrado com sucesso!', 'X', {
+    this.snackBar.open('Hóspede cadastrado com sucesso!', 'Ok', {
       duration: 3000,
     });
   }

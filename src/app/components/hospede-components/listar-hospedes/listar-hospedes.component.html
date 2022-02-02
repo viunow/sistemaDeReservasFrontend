@@ -1,9 +1,20 @@
 <div class="container">
     <h1>Lista de hóspedes</h1>
-    <mat-list role="list">
-        <mat-list-item class="list-item" role="listitem"
-        *ngFor="let hospede of hospedes">
-        {{hospede.nomeCompleto}}<mat-divider></mat-divider></mat-list-item>
-    </mat-list>
+    <mat-accordion>
+        <mat-expansion-panel (opened)="panelOpenState = true"
+                            (closed)="panelOpenState = false"
+                            *ngFor="let hospede of hospedes">
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                {{hospede.nomeCompleto}}
+            </mat-panel-title>
+        </mat-expansion-panel-header>
+        <ng-container>
+            <p>
+                Pendência: {{hospede.pendencia}}
+            </p>
+        </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
 </div>
 <router-outlet></router-outlet>

@@ -10,3 +10,7 @@
 h1 {
     font-weight: 500;
 }
+
+mat-panel-title {
+    font-weight: 450;
+}

@@ -1,3 +1,3 @@
 export class CadastrarQuartoInputModel {
-    tipoQuarto: string;
+    tipoQuarto: Array<any>;
 }
