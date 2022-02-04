@@ -6,7 +6,7 @@ h1 {
     font-weight: 500;
 }
 
-table.mat-table {
+table.mat-table, mat-paginator {
     width: 60%;
 }
 

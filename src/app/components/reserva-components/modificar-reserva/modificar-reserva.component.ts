@@ -13,8 +13,10 @@ import { DialogBoxComponent } from '../../dialog-box/dialog-box.component';
 })
 export class ModificarReservaComponent implements OnInit {
 
-  public reservas: Array<Reserva>;
-  dataSource = new MatTableDataSource<Array<Reserva>>();
+  // public reservas: Array<Reserva>;
+  // dataSource = new MatTableDataSource<Array<Reserva>>();
+
+  public reservas = new MatTableDataSource<any>([]);
 
   displayedColumns: string[] = [
     'id', 
@@ -79,15 +81,18 @@ export class ModificarReservaComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataSource.paginator = this.paginator;
+    this.getData();
+  }
+
+  getData() {
     this.reservasService.getReservas()
       .subscribe(reservas => {
-        this.reservas = reservas;
+        this.reservas.data = reservas;
       });
   }
 
-  // ngAfterViewInit() {
-  //   this.dataSource.paginator = this.paginator;
-  // }
+  ngAfterViewInit() {
+    this.reservas.paginator = this.paginator;
+  }
 
 }
