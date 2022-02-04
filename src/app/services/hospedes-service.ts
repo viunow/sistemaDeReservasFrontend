@@ -21,5 +21,4 @@ export class HospedesService {
   getHospedes(): Observable<Array<Hospede>> {
     return this.http.get<Array<Hospede>>(baseUrl);
   }
- 
 }

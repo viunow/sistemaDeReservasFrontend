@@ -1,41 +1,43 @@
 <div class="container">
+    <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+        <ng-container matColumnDef="id"> 
+            <th mat-header-cell *matHeaderCellDef>ID</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.id}}</td>
+        </ng-container>
 
-    <form class="modificar-reserva-form">
-        <mat-form-field id="selecionar-hospede-field" class="modificar-reserva-field" appearance="outline">
-            <mat-label>Selecionar hóspede</mat-label>
-            <mat-select>
-                <mat-option *ngFor="let hospede of hospedes" [value]="hospede.value">
-                    {{hospede.viewValue}}
-                </mat-option>
-            </mat-select>
-        </mat-form-field>
-        
-        <mat-form-field id="tipoquarto-field" class="modificar-reserva-field" appearance="outline">
-            <mat-label>Tipo do quarto</mat-label>
-            <mat-select>
-                <mat-option value="convencional">Convencional</mat-option>
-                <mat-option value="luxo">Luxo</mat-option>
-            </mat-select>
-        </mat-form-field>
-        
-        <div class="datas-container">
-            <mat-form-field id="dataentrada-field" class="modificar-reserva-field">
-                <mat-label>Data de entrada</mat-label>
-                <input matInput [matDatepicker]="picker">
-                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                <mat-datepicker #picker></mat-datepicker>
-            </mat-form-field>
-            
-            <mat-form-field id="datasaida-field" class="modificar-reserva-field">
-                <mat-label>Data de saida</mat-label>
-                <input matInput [matDatepicker]="picker2">
-                <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
-                <mat-datepicker #picker2></mat-datepicker>
-            </mat-form-field>
-        </div>
+        <ng-container matColumnDef="nomeHospede">
+            <th mat-header-cell *matHeaderCellDef>Nome do hóspede</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.nomeHospede}}</td>
+        </ng-container>
 
-        <a id="enviar-form" class="enviar-form" href="/enviar-formulario"><button mat-raised-button color="accent" class="button-modificar-reserva">Modificar reserva</button></a>
-    </form>
+        <ng-container matColumnDef="tipoQuarto">
+            <th mat-header-cell *matHeaderCellDef>Tipo do Quarto</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.tipoQuarto}}</td>
+        </ng-container>
 
+        <ng-container matColumnDef="dataEntrada">
+            <th mat-header-cell *matHeaderCellDef>Data de entrada</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.dataEntrada | date:'dd/MM/yyyy'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dataSaida">
+            <th mat-header-cell *matHeaderCellDef>Data de saída</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.dataSaida | date:'dd/MM/yyyy'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Ação </th>
+            <td mat-cell *matCellDef="let element" class="action-link">
+                <mat-icon aria-hidden="false" aria-label="icone de editar" (click)="openDialog('Update',element)" class="icon-edit">edit</mat-icon>
+                <mat-icon></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="icone de deletar" (click)="openDialog('Delete',element)" class="icon-delete">delete</mat-icon>
+                <mat-icon></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="icon de visibilidade" (click)="abrirDialog()" class="icon-visibility">visibility</mat-icon>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="5" showFirstLastButtons></mat-paginator>
 </div>
 <router-outlet></router-outlet>

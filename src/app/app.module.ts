@@ -20,6 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { MatIconModule } from '@angular/material/icon';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
@@ -34,6 +35,8 @@ import { CadastrarQuartoComponent } from './components/quarto-components/cadastr
 import { ListarQuartosComponent } from './components/quarto-components/listar-quartos/listar-quartos.component';
 import { CrudReservasComponent } from './components/reserva-components/crud-reservas/crud-reservas.component';
 import { HospedesService } from './services/hospedes-service';
+import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
+import { DialogComponent } from './dialog/dialog.component';
 
 @NgModule({
   declarations: [
@@ -48,7 +51,9 @@ import { HospedesService } from './services/hospedes-service';
     CadastrarHospedeComponent,
     CadastrarQuartoComponent,
     ListarQuartosComponent,
-    CrudReservasComponent
+    CrudReservasComponent,
+    DialogBoxComponent,
+    DialogComponent
   ],
   imports: [
     BrowserModule,
@@ -71,7 +76,8 @@ import { HospedesService } from './services/hospedes-service';
     MatPaginatorModule,
     MatSnackBarModule,
     MatTabsModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatIconModule
   ],
   providers: [
     {provide: MAT_DATE_LOCALE, useValue: 'en-GB'},
