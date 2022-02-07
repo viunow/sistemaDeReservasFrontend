@@ -1,5 +1,4 @@
 <div class="container">
-
     <form class="efetuar-reserva-form" [formGroup]="form" (ngSubmit)="onSubmit()">
         <mat-form-field id="selecionar-hospede-field" class="efetuar-reserva-field" appearance="outline" formControlName="hospedeId">
             <mat-label>Selecionar hóspede</mat-label>
@@ -42,16 +41,3 @@
     </form>
 
 </div>
-<router-outlet></router-outlet>
-
-<!-- 
-Dados necessarios
-    nome completo
-    telefone
-    email
-    cpf
-    tipo do quarto
--------------------
-Validacao
-    verifica a disponibilidade dentro do periodo solicitado
--->

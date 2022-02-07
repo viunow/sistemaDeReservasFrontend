@@ -1,17 +1,17 @@
 <!-- dialog-box.component.html -->
 <div class="container">
-    <h1 mat-dialog-title>Row Action :: <strong>{{action}}</strong></h1>
+    <h1 mat-dialog-title>Ação : <strong>{{action}}</strong></h1>
     <div mat-dialog-content>
     <mat-form-field *ngIf="action != 'Delete'; else elseTemplate">
         <input placeholder="{{action}} Name" matInput [(ngModel)]="local_data.name">
     </mat-form-field>
     <ng-template #elseTemplate>
-        Sure to delete <b>{{local_data.name}}</b>?
+        Cancelar reserva<b></b>?
     </ng-template>
+    <br><br>
     </div>
     <div mat-dialog-actions>
-        <button mat-button (click)="doAction()">{{action}}</button>
-        <button mat-button (click)="closeDialog()" mat-flat-button color="warn">Cancel</button>
+        <button mat-button (click)="doAction()"mat-flat-button color="warn">{{action}}</button>
+        <button mat-button (click)="closeDialog()">Cancel</button>
     </div>
 </div>
-<router-outlet></router-outlet>

@@ -1,16 +1,12 @@
-.container {
-    padding: 20px 16px;
-}
-
 h1 {
     font-weight: 500;
 }
 
 table.mat-table, mat-paginator {
-    width: 60%;
+    width: 50%;
 }
 
-mat-icon {
+.icon-edit:hover, .icon-delete:hover {
     cursor: pointer;
     transition: 0.4s;
 }

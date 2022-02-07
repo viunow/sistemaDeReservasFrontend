@@ -1,10 +1,7 @@
 <div class="container">
+    <button mat-raised-button color="accent" (click)="efetuarReservaDialog()">Nova reserva</button>
+    <br><br>
     <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
-        <ng-container matColumnDef="id"> 
-            <th mat-header-cell *matHeaderCellDef>ID</th>
-            <td mat-cell *matCellDef="let reserva">{{reserva.id}}</td>
-        </ng-container>
-
         <ng-container matColumnDef="nomeHospede">
             <th mat-header-cell *matHeaderCellDef>Nome do hóspede</th>
             <td mat-cell *matCellDef="let reserva">{{reserva.nomeHospede}}</td>
@@ -28,11 +25,11 @@
         <ng-container matColumnDef="action">
             <th mat-header-cell *matHeaderCellDef> Ação </th>
             <td mat-cell *matCellDef="let element" class="action-link">
-                <mat-icon aria-hidden="false" aria-label="icone de editar" (click)="openDialog('Update',element)" class="icon-edit">edit</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="icone de editar" matTooltip="Editar" (click)="openDialog('Update',element)" class="icon-edit">edit</mat-icon>
                 <mat-icon></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="icone de deletar" (click)="openDialog('Delete',element)" class="icon-delete">delete</mat-icon>
+                <mat-icon aria-hidden="false" aria-label="icone de deletar" matTooltip="Deletar" (click)="deletarDialog()" class="icon-delete">delete</mat-icon>
                 <mat-icon></mat-icon>
-                <mat-icon aria-hidden="false" aria-label="icon de visibilidade" (click)="abrirDialog()" class="icon-visibility">visibility</mat-icon>
+                <!-- <mat-icon aria-hidden="false" aria-label="icon de visibilidade" matTooltip="Ver" (click)="abrirDialog()" class="icon-visibility">visibility</mat-icon> -->
             </td>
         </ng-container>
         <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

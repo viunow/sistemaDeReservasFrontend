@@ -2,9 +2,10 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatTable, MatTableDataSource } from '@angular/material/table';
-import { Reserva } from 'src/app/models/reserva';
 import { ReservasService } from 'src/app/services/reservas-service';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { DialogBoxComponent } from '../../dialog-box/dialog-box.component';
+import { EfetuarReservaComponent } from '../efetuar-reserva/efetuar-reserva.component';
 
 @Component({
   selector: 'app-modificar-reserva',
@@ -13,20 +14,15 @@ import { DialogBoxComponent } from '../../dialog-box/dialog-box.component';
 })
 export class ModificarReservaComponent implements OnInit {
 
-  // public reservas: Array<Reserva>;
-  // dataSource = new MatTableDataSource<Array<Reserva>>();
-
   public reservas = new MatTableDataSource<any>([]);
 
   displayedColumns: string[] = [
-    'id', 
     'nomeHospede', 
     'tipoQuarto', 
     'dataEntrada', 
     'dataSaida',
     'action'
   ];
-  // dataSource = new MatTableDataSource<Array<Reserva>>();
   
   @ViewChild(MatTable, {static: true}) table: MatTable<any>;
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -40,10 +36,20 @@ export class ModificarReservaComponent implements OnInit {
     
   }
 
+  deletarDialog() {
+    
+  }
+
+  efetuarReservaDialog() {
+    this.dialog.open(EfetuarReservaComponent, {
+      width: '50%'
+    });
+  }
+
   openDialog(action, obj) {
     obj.action = action;
     const dialogRef = this.dialog.open(DialogBoxComponent, {
-      width: '100%',
+      width: '50%',
       data: obj
     });
 
@@ -89,6 +95,18 @@ export class ModificarReservaComponent implements OnInit {
       .subscribe(reservas => {
         this.reservas.data = reservas;
       });
+  }
+
+  putData() {
+    // this.reservasService.putReserva()
+    //   .subscribe(reservas => {
+    //     this.reservas.data = reservas;
+    //   });
+  }
+
+  deleteData() {
+    this.reservasService.deleteReserva()
+      .subscribe();
   }
 
   ngAfterViewInit() {

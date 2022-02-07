@@ -27,8 +27,8 @@ export class ReservasService {
   }
 
   //DeleteReserva()
-  deleteReserva(id: String) {
-    return this.http.delete(reservaUrl + '/'+id);
+  deleteReserva() {
+    return this.http.delete(reservaUrl);
   }
   
 }
