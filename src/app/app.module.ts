@@ -36,7 +36,8 @@ import { ListarQuartosComponent } from './components/quarto-components/listar-qu
 import { CrudReservasComponent } from './components/reserva-components/crud-reservas/crud-reservas.component';
 import { HospedesService } from './services/hospedes-service';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
-import { DialogComponent } from './dialog/dialog.component';
+import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
+import { DialogEditarComponent } from './components/dialog-editar/dialog-editar.component';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { DialogComponent } from './dialog/dialog.component';
     ListarQuartosComponent,
     CrudReservasComponent,
     DialogBoxComponent,
-    DialogComponent
+    DialogDeleteComponent,
+    DialogEditarComponent
   ],
   imports: [
     BrowserModule,

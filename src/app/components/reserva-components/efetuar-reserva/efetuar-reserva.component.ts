@@ -62,7 +62,7 @@ export class EfetuarReservaComponent implements OnInit {
     this.form.value.dataSaida.setHours(12, 0, 0);
     this.reservasService.postReserva(this.form.value)
       .subscribe(id => {
-        console.log('Reserva efetuada', this.form.value);
+        console.log('Reserva efetuada - ID: ', id, this.form.value);
         this.form.reset();
       }, error => alert(error));
   }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Reserva } from 'src/app/models/reserva';
+import { ReservasService } from 'src/app/services/reservas-service';
 
 @Component({
   selector: 'app-dialog-editar',
@@ -9,10 +10,12 @@ import { Reserva } from 'src/app/models/reserva';
 export class DialogEditarComponent implements OnInit {
 
   public reserva: Reserva;
-  constructor() { }
+  constructor(
+    private reservasService: ReservasService
+  ) { }
 
   ngOnInit(): void {
-    this._reservaService.ObterPorID(this.data.reservaID)
+    // this.reservasService.ObterPorID(this.data.reservaID)
   }
 
 }

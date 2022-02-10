@@ -27,8 +27,8 @@ export class ReservasService {
   }
 
   //DeleteReserva()
-  deleteReserva() {
-    return this.http.delete(reservaUrl);
+  deleteReserva(id: string): Observable<void> {
+    return this.http.delete<void>(reservaUrl +'/'+id);
   }
   
 }
