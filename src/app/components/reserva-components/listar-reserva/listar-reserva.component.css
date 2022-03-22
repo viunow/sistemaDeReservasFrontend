@@ -1,0 +1,24 @@
+h1 {
+    font-weight: 500;
+}
+
+table.mat-table, mat-paginator {
+    width: 50%;
+}
+
+.icon-edit:hover, .icon-delete:hover {
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.icon-edit:hover {
+    color: #69f0ae;
+}
+
+.icon-delete:hover {
+    color: #f44336;
+}
+
+.icon-visibility:hover {
+    color: lightskyblue;
+}

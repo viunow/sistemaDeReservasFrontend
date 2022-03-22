@@ -12,9 +12,11 @@ import { CadastrarQuartoInputModel } from 'src/app/services/input-models/cadastr
 export class CadastrarQuartoComponent implements OnInit {
 
   tipoQuarto = "";
+  numero = "";
 
   form = this.formBuilder.group({
-    tipoQuarto: ''
+    tipoQuarto: '',
+    numero: '',
   });
 
   constructor(
@@ -29,7 +31,8 @@ export class CadastrarQuartoComponent implements OnInit {
 
   criarQuarto(quarto: CadastrarQuartoInputModel) {
     this.form = this.formBuilder.group({
-      tipoQuarto: [quarto.tipoQuarto]
+      tipoQuarto: [quarto.tipoQuarto],
+      numero: [quarto.numero]
     })
   }
 
@@ -37,13 +40,25 @@ export class CadastrarQuartoComponent implements OnInit {
     this.quartosService.postQuarto(this.form.value)
       .subscribe(id => {
         console.log('Quarto cadastrado', this.form.value);
+        this.snackBar.open('Quarto cadastrado com sucesso!', 'Ok');
         this.form.reset();
-      }, error => alert(error));
+      }, this.error);
   }
 
-  abrirSnackbar() {
-    this.snackBar.open('Quarto cadastrado com sucesso!', 'X', {
-      duration: 3000,
+  public error = (error: any): void => {
+    if (typeof error == 'string')
+      this.toast(error);
+    else if (error && typeof error == 'object' && error.error.Message)
+      this.toast(error.error.Message);
+    else
+      this.toast("Erro ao cadastrar quarto, tente novamente.");
+  }
+
+  public toast(message: string): void {
+    this.snackBar.open(message, "X", {
+      duration: 5000,
+      horizontalPosition: "center",
+      verticalPosition: "bottom"
     });
   }
 }

@@ -1,1 +1,35 @@
-<app-modificar-reserva></app-modificar-reserva>
+<h1>Modificar reserva</h1>
+<p>{{reserva.nomeHospede}}</p>
+<form class="modificar-reserva-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+    <mat-form-field id="tipoquarto-field" class="efetuar-reserva-field" appearance="outline" formControlName="quartoId">
+        <mat-label>Selecionar quarto</mat-label>
+        <mat-select formControlName="quartoId" [(value)]="quartoSelecionado">
+            <mat-option *ngFor="let quarto of quartos"
+                [value]="'Tipo do quarto escolhido: ' + quarto.tipoQuarto + ' | ' + 'Valor do quarto: ' + 'R$' + quarto.preco">
+                {{quarto.numero}} |
+                {{quarto.tipoQuarto}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <h3>{{quartoSelecionado}}</h3>
+    <br>
+    <div class="datas-container">
+        <mat-form-field id="dataentrada-field" class="modificar-reserva-field">
+            <mat-label>Data de entrada</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dataEntrada">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <mat-form-field id="datasaida-field" class="modificar-reserva-field">
+            <mat-label>Data de saida</mat-label>
+            <input matInput [matDatepicker]="picker2" formControlName="dataSaida">
+            <mat-datepicker-toggle matSuffix [for]="picker2"></mat-datepicker-toggle>
+            <mat-datepicker #picker2></mat-datepicker>
+        </mat-form-field>
+    </div>
+
+    <a id="enviar-form" class="enviar-form" href=""><button mat-raised-button color="accent"
+            class="button-modificar-reserva">Salvar</button></a>
+</form>

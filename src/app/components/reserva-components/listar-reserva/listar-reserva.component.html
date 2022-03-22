@@ -1,0 +1,40 @@
+<div class="container">
+    <button mat-raised-button color="accent" (click)="efetuarReservaDialog()">Nova reserva</button>
+    <br><br>
+    <table mat-table [dataSource]="reservas" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="nomeHospede">
+            <th mat-header-cell *matHeaderCellDef>Nome do hóspede</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.nomeHospede}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="tipoQuarto">
+            <th mat-header-cell *matHeaderCellDef>Quarto</th>
+            <td mat-cell *matCellDef="let quarto">{{quarto.numero}} | {{quarto.tipoQuarto}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dataEntrada">
+            <th mat-header-cell *matHeaderCellDef>Data de entrada</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.dataEntrada | date:'dd/MM/yyyy'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="dataSaida">
+            <th mat-header-cell *matHeaderCellDef>Data de saída</th>
+            <td mat-cell *matCellDef="let reserva">{{reserva.dataSaida | date:'dd/MM/yyyy'}}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="action">
+            <th mat-header-cell *matHeaderCellDef> Ação </th>
+            <td mat-cell *matCellDef="let reserva" class="action-link">
+                <mat-icon aria-hidden="false" aria-label="icone de editar" matTooltip="Editar" (click)="editarDialog(reserva.id)" class="icon-edit">edit</mat-icon>
+                <mat-icon></mat-icon>
+                <mat-icon aria-hidden="false" aria-label="icone de deletar" matTooltip="Deletar" (click)="deletarDialog(reserva.id)" class="icon-delete">delete</mat-icon>
+                <mat-icon></mat-icon>
+            </td>
+        </ng-container>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+    </table>
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" [pageSize]="10" showFirstLastButtons></mat-paginator>
+</div>
+<router-outlet></router-outlet>

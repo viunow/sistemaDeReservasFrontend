@@ -23,21 +23,16 @@ export class DialogDeleteComponent {
     private reservasService: ReservasService
   ) { console.log(data) }
   
-  cancelar(): void {
+  naoDeletar(): void {
     this.dialogRef.close();
   }
 
-  // openDialog() {
-  //   this.dialog.open(DialogDeleteComponent, {
-  //     data: {
-  //       hospedeId: '',
-  //     },
-  //   });
-  // }
-
   deletar(data: ReservaInputDialog): void {
     this.reservasService.deleteReserva(data.reservaId)
-      .subscribe(response => console.log('delete reserva from reservas response: ', response))
+      .subscribe(response => {
+        console.log('delete reserva from reservas response: ', response)
+        this.reservasService.getReservasSubject();
+      })
       this.dialogRef.close();
   }
 

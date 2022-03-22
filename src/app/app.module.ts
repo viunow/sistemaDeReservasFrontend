@@ -27,7 +27,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { HomeComponent } from './components/home/home.component';
 import { ReservasComponent } from './components/reservas/reservas.component';
 import { EfetuarReservaComponent } from './components/reserva-components/efetuar-reserva/efetuar-reserva.component';
-import { ModificarReservaComponent } from './components/reserva-components/modificar-reserva/modificar-reserva.component';
+import { ListarReservaComponent } from './components/reserva-components/listar-reserva/listar-reserva.component';
 import { CancelarReservaComponent } from './components/reserva-components/cancelar-reserva/cancelar-reserva.component';
 import { ListarHospedesComponent } from './components/hospede-components/listar-hospedes/listar-hospedes.component';
 import { CadastrarHospedeComponent } from './components/hospede-components/cadastrar-hospede/cadastrar-hospede.component';
@@ -38,6 +38,7 @@ import { HospedesService } from './services/hospedes-service';
 import { DialogBoxComponent } from './components/dialog-box/dialog-box.component';
 import { DialogDeleteComponent } from './components/dialog-delete/dialog-delete.component';
 import { DialogEditarComponent } from './components/dialog-editar/dialog-editar.component';
+import { ModificarReservaComponent } from './components/reserva-components/modificar-reserva/modificar-reserva.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { DialogEditarComponent } from './components/dialog-editar/dialog-editar.
     EfetuarReservaComponent,
     ListarHospedesComponent,
     ReservasComponent,
-    ModificarReservaComponent,
+    ListarReservaComponent,
     CancelarReservaComponent,
     CadastrarHospedeComponent,
     CadastrarQuartoComponent,
@@ -55,7 +56,8 @@ import { DialogEditarComponent } from './components/dialog-editar/dialog-editar.
     CrudReservasComponent,
     DialogBoxComponent,
     DialogDeleteComponent,
-    DialogEditarComponent
+    DialogEditarComponent,
+    ModificarReservaComponent
   ],
   imports: [
     BrowserModule,

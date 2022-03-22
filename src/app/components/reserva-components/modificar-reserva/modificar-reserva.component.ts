@@ -1,11 +1,11 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatTable, MatTableDataSource } from '@angular/material/table';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { Quarto } from 'src/app/models/quarto';
+import { Reserva } from 'src/app/models/reserva';
+import { ModificarReservaInputModel } from 'src/app/services/input-models/modificar-reserva-input-model';
+import { QuartosService } from 'src/app/services/quartos-service';
 import { ReservasService } from 'src/app/services/reservas-service';
-import { EfetuarReservaComponent } from '../efetuar-reserva/efetuar-reserva.component';
-import { DialogDeleteComponent } from '../../dialog-delete/dialog-delete.component';
-import { DialogEditarComponent } from '../../dialog-editar/dialog-editar.component';
 
 @Component({
   selector: 'app-modificar-reserva',
@@ -14,59 +14,59 @@ import { DialogEditarComponent } from '../../dialog-editar/dialog-editar.compone
 })
 export class ModificarReservaComponent implements OnInit {
 
-  public reservas = new MatTableDataSource<any>([]);
+  public reserva: Reserva;
+  public quartos: Array<Quarto>;
 
-  displayedColumns: string[] = [
-    'reservaId',
-    'nomeHospede', 
-    'tipoQuarto', 
-    'dataEntrada', 
-    'dataSaida',
-    'action'
-  ];
-  
-  @ViewChild(MatTable, {static: true}) table: MatTable<any>;
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  dataEntrada: '';
+  dataSaida: '';
+
+  form = this.formBuilder.group({
+    quartoId: '',
+    dataEntrada: '',
+    dataSaida: ''
+  })
 
   constructor(
-    public dialog: MatDialog,
-    private reservasService: ReservasService
-  ) { }
+    private quartosService: QuartosService,
+    private reservasService: ReservasService,
+    private formBuilder: FormBuilder,
+    private snackBar: MatSnackBar
+    ) { }
 
   ngOnInit(): void {
-    this.getData();
+    this.modificarReserva(new ModificarReservaInputModel());
+    // this.reservasService.getReservaPorId()
+    //   .subscribe(reserva => {
+    //     this.reserva = reserva;
+    //   })
+    this.quartosService.getQuartos()
+      .subscribe(quartos => {
+        this.quartos = quartos;
+      })
   }
 
-  getData() {
-    this.reservasService.getReservas()
-      .subscribe(reservas => {
-        this.reservas.data = reservas;
-      });
+  modificarReserva(reserva: ModificarReservaInputModel) {
+    this.form = this.formBuilder.group({
+      quartoId: [reserva.quartoId],
+      dataEntrada: [reserva.dataEntrada],
+      dataSaida: [reserva.dataSaida]
+    })
   }
 
-  efetuarReservaDialog() {
-    this.dialog.open(EfetuarReservaComponent, {
-      width: '50%'
-    });
+  onSubmit() {
+    this.form.value.dataEntrada.setHours(12, 0, 0);
+    this.form.value.dataSaida.setHours(12, 0, 0);
+    this.reservasService.putReserva(this.form.value)
+      .subscribe(id => {
+        console.log('Reserva modificada - ID: ', id, this.form.value);
+        this.form.reset();
+      }, error => alert("Erro ao modificar reserva " + error));
   }
 
-  editarDialog(id: string) {
-    this.dialog.open(DialogEditarComponent, {
-      width: '50%'
-    });
-  }
-
-  deletarDialog(id: string) {
-    this.dialog.open(DialogDeleteComponent, {
-      data: {
-        reservaId: id
-      },
-      width: '20%'
-    });
-  }
-
-  ngAfterViewInit() {
-    this.reservas.paginator = this.paginator;
+  abrirSnackbar() {
+    this.snackBar.open('Reserva modificada com sucesso!', 'Ok', {
+      duration: 3000,
+    })
   }
 
 }

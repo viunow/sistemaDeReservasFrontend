@@ -11,6 +11,7 @@ import { HospedesService } from 'src/app/services/hospedes-service';
 export class ListarHospedesComponent implements OnInit {
 
   public hospedes: Array<Hospede>;
+  public data: string;
 
   panelOpenState = false;
 
@@ -20,6 +21,17 @@ export class ListarHospedesComponent implements OnInit {
     this.hospedesService.getHospedes()
       .subscribe(hospedes => {
         this.hospedes = hospedes;
+      });
+  }
+
+  quitarPendencia(hospede: Hospede) {
+    this.hospedesService.removerPendenciaHospede(hospede)
+      .subscribe(hospede => {
+        console.log('Pendência quitada.', hospede);
+        this.hospedesService.getHospedes()
+          .subscribe(hospedes => {
+            this.hospedes = hospedes;
+          });
       });
   }
 }

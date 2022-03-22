@@ -1,6 +1,6 @@
 <div class="container">
     <form class="efetuar-reserva-form" [formGroup]="form" (ngSubmit)="onSubmit()">
-        <mat-form-field id="selecionar-hospede-field" class="efetuar-reserva-field" appearance="outline" formControlName="hospedeId">
+        <mat-form-field id="selecionar-hospede-field" class="efetuar-reserva-field" appearance="outline">
             <mat-label>Selecionar hóspede</mat-label>
             <mat-select formControlName="hospedeId">
                 <mat-option *ngFor="let hospede of hospedes" [value]="hospede.id" formControlName="hospedeId">
@@ -9,10 +9,11 @@
             </mat-select>
         </mat-form-field>
 
-        <mat-form-field id="tipoquarto-field" class="efetuar-reserva-field" appearance="outline" formControlName="quartoId">
-            <mat-label>Tipo do quarto</mat-label>
+        <mat-form-field id="tipoquarto-field" class="efetuar-reserva-field" appearance="outline">
+            <mat-label>Selecionar quarto</mat-label>
             <mat-select formControlName="quartoId">
               <mat-option *ngFor="let quarto of quartos" [value]="quarto.id">
+                {{quarto.numero}} |
                 {{quarto.tipoQuarto}}
                 </mat-option>
             </mat-select>
@@ -34,6 +35,6 @@
             </mat-form-field>
         </div>
 
-        <a id="enviar-form" class="enviar-form" href="/enviar-formulario"><button mat-raised-button color="accent" class="button-efetuar-reserva"(click)="abrirSnackbar()">Efetuar reserva</button></a>
+        <a id="enviar-form" class="enviar-form" href="/enviar-formulario"><button mat-raised-button color="accent" class="button-efetuar-reserva">Efetuar reserva</button></a>
     </form>
 </div>

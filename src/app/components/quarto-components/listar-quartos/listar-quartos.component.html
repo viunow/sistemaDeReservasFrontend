@@ -1,19 +1,21 @@
 <div class="container">
     <h1>Lista de quartos</h1>
     <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false"
-                            *ngFor="let quarto of quartos">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                Quarto {{quarto.tipoQuarto}}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ng-container>
-            <p>
-                Preço: R${{quarto.preco}}
-            </p>
-        </ng-container>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+            *ngFor="let quarto of quartos">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    Quarto {{quarto.numero}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container>
+                <p>
+                    Tipo do quarto: {{quarto.tipoQuarto}}
+                </p>
+                <p>
+                    Preço: R${{quarto.preco}}
+                </p>
+            </ng-container>
         </mat-expansion-panel>
     </mat-accordion>
 </div>

@@ -1,8 +1,5 @@
-export class Reserva {
+export class ModificarReservaInputModel {
     reservaId: string;
-    id: string;
-    nomeHospede: string;
-    hospedeId: string;
     quartoId: string;
     dataEntrada: Date;
     dataSaida: Date;

@@ -1,19 +1,27 @@
 <div class="container">
     <h1>Lista de hóspedes</h1>
     <mat-accordion>
-        <mat-expansion-panel (opened)="panelOpenState = true"
-                            (closed)="panelOpenState = false"
-                            *ngFor="let hospede of hospedes">
-        <mat-expansion-panel-header>
-            <mat-panel-title>
-                {{hospede.nomeCompleto}}
-            </mat-panel-title>
-        </mat-expansion-panel-header>
-        <ng-container>
-            <p>
-                Pendência: {{hospede.pendencia}}
-            </p>
-        </ng-container>
+        <mat-expansion-panel (opened)="panelOpenState = true" (closed)="panelOpenState = false"
+            *ngFor="let hospede of hospedes">
+            <mat-expansion-panel-header>
+                <mat-panel-title>
+                    {{hospede.nomeCompleto}}
+                </mat-panel-title>
+            </mat-expansion-panel-header>
+            <ng-container *ngIf="hospede.pendencia == true">
+                <p>
+                    id: {{hospede.id}}
+                </p>
+                <p>
+                    Hóspede com pendência, regularize para efetuar novas reservas.
+                </p>
+                <button mat-raised-button color="accent" (click)="quitarPendencia(hospede)">Quitar pendência</button>
+            </ng-container>
+            <ng-container *ngIf="hospede.pendencia == false">
+                <p>
+                    Hóspede sem pendência.
+                </p>
+            </ng-container>
         </mat-expansion-panel>
     </mat-accordion>
 </div>
