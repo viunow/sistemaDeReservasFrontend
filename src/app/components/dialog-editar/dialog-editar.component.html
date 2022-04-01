@@ -2,17 +2,19 @@
 <p>{{reserva.nomeHospede}}</p>
 <form class="modificar-reserva-form" [formGroup]="form" (ngSubmit)="onSubmit()">
 
-    <mat-form-field id="tipoquarto-field" class="efetuar-reserva-field" appearance="outline" formControlName="quartoId">
+    <mat-form-field id="tipoquarto-field" class="modificar-reserva-field" appearance="outline">
         <mat-label>Selecionar quarto</mat-label>
-        <mat-select formControlName="quartoId" [(value)]="quartoSelecionado">
-            <mat-option *ngFor="let quarto of quartos"
-                [value]="'Tipo do quarto escolhido: ' + quarto.tipoQuarto + ' | ' + 'Valor do quarto: ' + 'R$' + quarto.preco">
+        <mat-select formControlName="quarto" [(value)]="quartoSelecionado"
+            (selectionChange)="quartoChanged($event.value)">
+            <mat-option *ngFor="let quarto of quartos" [value]=quarto>
                 {{quarto.numero}} |
                 {{quarto.tipoQuarto}}
             </mat-option>
         </mat-select>
     </mat-form-field>
-    <h3>{{quartoSelecionado}}</h3>
+    <ng-container *ngIf="atualizaPrecoReserva">
+        <h3>Diferença de preço da reserva: R$ {{(quantidadeDias) * diferenca}}</h3>
+    </ng-container>
     <br>
     <div class="datas-container">
         <mat-form-field id="dataentrada-field" class="modificar-reserva-field">

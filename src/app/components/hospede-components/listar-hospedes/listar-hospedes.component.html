@@ -10,9 +10,6 @@
             </mat-expansion-panel-header>
             <ng-container *ngIf="hospede.pendencia == true">
                 <p>
-                    id: {{hospede.id}}
-                </p>
-                <p>
                     Hóspede com pendência, regularize para efetuar novas reservas.
                 </p>
                 <button mat-raised-button color="accent" (click)="quitarPendencia(hospede)">Quitar pendência</button>

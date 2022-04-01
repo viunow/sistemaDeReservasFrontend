@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, ElementRef, Inject, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
@@ -15,15 +15,21 @@ import { ReservasService } from 'src/app/services/reservas-service';
 export class DialogEditarComponent implements OnInit {
 
   public reserva: Reserva;
+  public quarto: Quarto;
   public quartos: Array<Quarto>;
 
   dataEntrada: '';
   dataSaida: '';
-  quartoSelecionado = '';
+
+  public quartoSelecionado: Quarto;
+  public quartoAtual: any;
+  public diferenca: any;
+  public quantidadeDias: number;
+  public atualizaPrecoReserva = false;
 
   form = this.formBuilder.group({
     id: '',
-    quartoId: '',
+    quarto: '',
     dataEntrada: '',
     dataSaida: ''
   })
@@ -33,7 +39,7 @@ export class DialogEditarComponent implements OnInit {
     private reservasService: ReservasService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    @Inject(MAT_DIALOG_DATA) public data: string
+    @Inject(MAT_DIALOG_DATA) public data: any
   ) { }
 
   ngOnInit(): void {
@@ -44,7 +50,14 @@ export class DialogEditarComponent implements OnInit {
         this.quartosService.getQuartos()
           .subscribe(quartos => {
             this.quartos = quartos;
+            this.quartoSelecionado = this.quartos.find(a => a.id == this.reserva.quartoId);
+            this.quartoAtual = this.quartoSelecionado.preco;
+            console.log("quarto atual: " + this.quartoAtual);
             this.configurarForm();
+            let date1 = new Date(reserva.dataEntrada);
+            let date2 = new Date(reserva.dataSaida);
+            this.quantidadeDias = ((date2.getTime() - date1.getTime()) / 1000 / 60 / 60 / 24);
+            console.log("quantidade de dias: " + this.quantidadeDias);
           })
       })
   }
@@ -52,16 +65,28 @@ export class DialogEditarComponent implements OnInit {
   configurarForm() {
     this.form = this.formBuilder.group({
       id: [this.reserva.id],
-      quartoId: [this.reserva.quartoId],
+      quarto: [this.quartoSelecionado],
       dataEntrada: [this.reserva.dataEntrada],
-      dataSaida: [this.reserva.dataSaida]
+      dataSaida: [this.reserva.dataSaida],
     })
   }
 
   onSubmit() {
-    this.form.value.dataEntrada.setHours(12, 0, 0);
-    this.form.value.dataSaida.setHours(12, 0, 0);
-    this.reservasService.putReserva(this.form.value)
+    let reserva = new Reserva();
+    reserva.id = this.form.value.id;
+    reserva.quartoId = this.form.value.quarto.id;
+
+    reserva.dataEntrada = typeof this.form.value.dataEntrada == 'string'
+      ? new Date(this.form.value.dataEntrada)
+      : this.form.value.dataEntrada;
+
+    reserva.dataSaida = typeof this.form.value.dataSaida == 'string'
+      ? new Date(this.form.value.dataSaida)
+      : this.form.value.dataSaida;
+
+    reserva.dataEntrada.setHours(12, 0, 0);
+    reserva.dataSaida.setHours(12, 0, 0);
+    this.reservasService.putReserva(reserva)
       .subscribe(id => {
         console.log('Reserva modificada - ID: ', id, this.form.value);
         this.abrirSnackbar();
@@ -74,6 +99,12 @@ export class DialogEditarComponent implements OnInit {
     this.snackBar.open('Reserva modificada com sucesso!', 'Ok', {
       duration: 3000,
     })
+  }
+
+  public quartoChanged(quarto: Quarto) {
+    this.diferenca = quarto.preco - this.quartoAtual;
+    this.atualizaPrecoReserva = true;
+    console.log("Diferença: " + (this.quantidadeDias) * this.diferenca);
   }
 
   public error = (error: any): void => {

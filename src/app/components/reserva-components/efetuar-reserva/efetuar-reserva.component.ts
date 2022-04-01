@@ -39,7 +39,7 @@ export class EfetuarReservaComponent implements OnInit {
     private reservasService: ReservasService,
     private formBuilder: FormBuilder,
     private snackBar: MatSnackBar,
-    ) { }
+  ) { }
 
   ngOnInit(): void {
     this.efetuarReserva(new EfetuarReservaInputModel());
@@ -84,11 +84,11 @@ export class EfetuarReservaComponent implements OnInit {
 
   public error = (error: any): void => {
     if (typeof error == 'string')
-        this.toast(error);
+      this.toast(error);
     else if (error && typeof error == 'object' && error.error.Message)
-        this.toast(error.error.Message);
+      this.toast(error.error.Message);
     else
-        this.toast("Erro ao efetuar reserva, tente novamente.");
+      this.toast("Erro ao efetuar reserva, tente novamente.");
   }
 
   public toast(message: string): void {

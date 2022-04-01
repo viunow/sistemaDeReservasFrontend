@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Hospede } from 'src/app/models/hospede';
 import { HospedesService } from 'src/app/services/hospedes-service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-listar-hospedes',
@@ -15,7 +16,10 @@ export class ListarHospedesComponent implements OnInit {
 
   panelOpenState = false;
 
-  constructor(private hospedesService: HospedesService) { }
+  constructor(
+    private hospedesService: HospedesService,
+    private snackBar: MatSnackBar
+  ) { }
 
   ngOnInit() {
     this.hospedesService.getHospedes()
@@ -28,10 +32,17 @@ export class ListarHospedesComponent implements OnInit {
     this.hospedesService.removerPendenciaHospede(hospede)
       .subscribe(hospede => {
         console.log('Pendência quitada.', hospede);
+        this.abrirSnackBar();
         this.hospedesService.getHospedes()
           .subscribe(hospedes => {
             this.hospedes = hospedes;
           });
       });
+  }
+
+  abrirSnackBar() {
+    this.snackBar.open('Pendência removida.', 'Ok', {
+      duration: 5000,
+    });
   }
 }
